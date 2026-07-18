@@ -245,6 +245,42 @@
       box-shadow: 0 30px 80px rgba(0,0,0,0.3);
     }
 
+    /* ─── FLIPBOOK ─── */
+    .flipbook {
+      position: relative; background: var(--cream);
+      padding: 4rem 2rem; text-align: center; overflow: hidden;
+    }
+    .flipbook-frame {
+      position: relative; width: 100%; max-width: 700px;
+      margin: 0 auto; aspect-ratio: 3/2;
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .flipbook-frame img {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0;
+      transition: none;
+    }
+    .flipbook-frame img.fb-active {
+      opacity: 1;
+    }
+    .flipbook-credit {
+      margin-top: 1.25rem;
+      font-family: var(--font-body); font-size: 0.8rem;
+      color: var(--text-light); font-style: italic;
+    }
+    .flipbook-controls {
+      margin-top: 1rem; display: flex; justify-content: center; gap: 0.75rem;
+    }
+    .fb-btn {
+      background: var(--green); color: var(--white); border: none;
+      font-family: var(--font-display); font-size: 0.65rem;
+      padding: 0.5rem 1.25rem; border-radius: 30px; cursor: pointer;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .fb-btn:hover { transform: translateY(-2px); }
+    .fb-btn.paused { background: var(--yellow); color: var(--green); }
+
     /* ─── FULL-WIDTH VIDEO ─── */
     .fullvid {
       position: relative; height: 55vh; min-height: 380px; overflow: hidden; padding: 0;
@@ -520,6 +556,15 @@
       </div>
     </section>
 
+    <!-- FLIPBOOK -->
+    <div class="flipbook rv" id="flipbook" aria-label="Animated photo sequence of Bloco GNV performing">
+      <div class="flipbook-frame" id="fbFrame"></div>
+      <div class="flipbook-controls">
+        <button class="fb-btn" id="fbToggle" aria-label="Pause animation">PAUSE</button>
+      </div>
+      <p class="flipbook-credit">Photos by Lucas</p>
+    </div>
+
     <!-- FULL-WIDTH VIDEO -->
     <div class="fullvid" aria-hidden="true">
       <video autoplay muted loop playsinline>
@@ -645,6 +690,63 @@
     // Generate mosaics
     generateMosaic(document.getElementById('geoFlag'), 1600, 500, 50);
     generateMosaic(document.getElementById('geoInvolved'), 1600, 1200, 70);
+
+    // ─── Flipbook ───
+    (function() {
+      const frame = document.getElementById('fbFrame');
+      const toggle = document.getElementById('fbToggle');
+      const totalFrames = 26;
+      const imgs = [];
+      let current = 0;
+      let playing = true;
+      let interval;
+
+      // Preload images (89 down to 64)
+      for (let i = 89; i >= 64; i--) {
+        const img = document.createElement('img');
+        img.src = `media/BlocoGNV (${i}).jpeg`;
+        img.alt = `Bloco GNV performance frame ${90 - i} of ${totalFrames}`;
+        img.loading = 'eager';
+        if (i === 89) img.classList.add('fb-active');
+        frame.appendChild(img);
+        imgs.push(img);
+      }
+
+      function nextFrame() {
+        imgs[current].classList.remove('fb-active');
+        current = (current + 1) % totalFrames;
+        imgs[current].classList.add('fb-active');
+      }
+
+      function start() {
+        interval = setInterval(nextFrame, 100);
+        playing = true;
+        toggle.textContent = 'PAUSE';
+        toggle.classList.remove('paused');
+        toggle.setAttribute('aria-label', 'Pause animation');
+      }
+
+      function stop() {
+        clearInterval(interval);
+        playing = false;
+        toggle.textContent = 'PLAY';
+        toggle.classList.add('paused');
+        toggle.setAttribute('aria-label', 'Play animation');
+      }
+
+      // Start when visible
+      const fbObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting && playing) start();
+          else if (!e.isIntersecting) { clearInterval(interval); }
+        });
+      }, { threshold: 0.3 });
+      fbObs.observe(frame);
+
+      toggle.addEventListener('click', () => {
+        if (playing) stop(); else start();
+      });
+    })();
 
     // ─── Nav ───
     const nav = document.querySelector('nav');
