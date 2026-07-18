@@ -23,16 +23,30 @@
       --white: #FFFFFF;
       --cream: #FFFEF5;
       --text: #1A3A2A;
-      --text-light: #3D6B4F;
+      --text-light: #2D5540;
       --font-display: 'Bungee', sans-serif;
       --font-body: 'DM Sans', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
+    main { display: block; }
     body {
       font-family: var(--font-body); color: var(--text);
       background: var(--cream); -webkit-font-smoothing: antialiased;
       overflow-x: hidden; line-height: 1.6;
+    }
+
+    /* ─── SKIP NAV ─── */
+    .skip-link {
+      position: absolute; top: -100%; left: 50%; transform: translateX(-50%);
+      background: var(--yellow); color: var(--green); padding: 0.75rem 1.5rem;
+      font-family: var(--font-display); font-size: 0.85rem;
+      border-radius: 0 0 8px 8px; z-index: 200;
+      text-decoration: none;
+      transition: top 0.3s;
+    }
+    .skip-link:focus {
+      top: 0;
     }
 
     /* ─── NAV ─── */
@@ -57,7 +71,7 @@
       text-decoration: none; opacity: 0.75; transition: opacity 0.3s;
       text-transform: uppercase; letter-spacing: 0.12em;
     }
-    .nav-links a:hover { opacity: 1; }
+    .nav-links a:hover, .nav-links a:focus { opacity: 1; }
     .nav-hamburger {
       display: none; background: none; border: none; cursor: pointer; padding: 0.5rem;
     }
@@ -103,27 +117,13 @@
     .hero h1 .yellow { color: var(--yellow); }
 
     .hero-sub {
-      font-size: 1.1rem; color: rgba(255,255,255,0.65); line-height: 1.8;
+      font-size: 1.1rem; color: rgba(255,255,255,0.85); line-height: 1.8;
       max-width: 480px; margin: 0 auto 2.5rem;
       animation: heroIn 1.2s cubic-bezier(0.16,1,0.3,1) 0.7s both;
     }
     .hero-btns {
       display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
       animation: heroIn 1.2s cubic-bezier(0.16,1,0.3,1) 0.9s both;
-    }
-    .hero-scroll {
-      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-      z-index: 2; animation: heroIn 1s ease 1.8s both;
-    }
-    .scroll-line {
-      width: 1px; height: 55px;
-      background: linear-gradient(transparent, var(--yellow));
-      margin: 0 auto;
-      animation: scrollPulse 2.5s ease-in-out infinite;
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.2; height: 35px; }
-      50% { opacity: 1; height: 55px; }
     }
     @keyframes heroIn {
       from { opacity: 0; transform: translateY(40px); }
@@ -140,8 +140,8 @@
     .btn:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.15); }
     .btn-yellow { background: var(--yellow); color: var(--green); }
     .btn-yellow:hover { background: #FFE940; }
-    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
-    .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.5); }
+    .btn-outline:hover, .btn-outline:focus { border-color: var(--yellow); color: var(--yellow); }
     .btn-green { background: var(--green); color: var(--white); }
 
     /* ─── TICKER ─── */
@@ -170,7 +170,6 @@
 
     /* ═══════════════════════════════════════
        GEOMETRIC TRIANGLE MOSAIC
-       Inspired by the Novos Baianos artwork
        ═══════════════════════════════════════ */
     .geo-mosaic {
       position: relative; width: 100%; height: 180px; overflow: hidden;
@@ -191,6 +190,7 @@
     /* ─── SPLIT SECTIONS ─── */
     .split {
       display: grid; grid-template-columns: 1fr 1fr; min-height: 520px;
+      padding: 0;
     }
     .split-text {
       display: flex; flex-direction: column; justify-content: center;
@@ -211,7 +211,7 @@
     }
     .split-label.green { color: var(--green); }
     .split-label.yellow { color: var(--yellow); }
-    .split-label.blue { color: var(--blue); }
+    .split-label.blue { color: #003D75; }
     .split-heading {
       font-family: var(--font-display);
       font-size: clamp(1.5rem, 3vw, 2.1rem);
@@ -223,11 +223,11 @@
     .split-body { font-size: 0.98rem; line-height: 1.85; margin-bottom: 1rem; }
     .split-body.dark { color: var(--text-light); }
     .split-body.light { color: rgba(255,255,255,0.88); }
-    .split-body.on-yellow { color: var(--text); }
+    .split-body.on-yellow { color: #1A3A2A; }
 
     /* ─── FLAG ─── */
     .flag-wrap {
-      position: relative; overflow: hidden;
+      position: relative; overflow: hidden; padding: 0;
     }
     .flag-wrap .geo-canvas { position: absolute; inset: 0; z-index: 0; }
     .flag-wrap .geo-canvas svg { width: 100%; height: 100%; }
@@ -247,7 +247,7 @@
 
     /* ─── FULL-WIDTH VIDEO ─── */
     .fullvid {
-      position: relative; height: 55vh; min-height: 380px; overflow: hidden;
+      position: relative; height: 55vh; min-height: 380px; overflow: hidden; padding: 0;
     }
     .fullvid video {
       position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%;
@@ -290,7 +290,7 @@
       gap: 1.25rem; margin-top: 2.5rem;
     }
     .wcard {
-      background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
       border: 1px solid rgba(255,255,255,0.5);
       border-radius: 16px; padding: 2rem;
       transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s;
@@ -315,7 +315,7 @@
       gap: 2rem; margin-top: 2.5rem; align-items: start;
     }
     .gi-info {
-      background: rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
       border-radius: 16px; padding: 2.5rem;
       border: none;
       transition: box-shadow 0.5s;
@@ -326,17 +326,17 @@
       color: var(--green); margin-bottom: 1rem;
     }
     .gi-info p {
-      font-size: 0.95rem; color: var(--text-light); line-height: 1.85; margin-bottom: 0.75rem;
+      font-size: 0.95rem; color: var(--text); line-height: 1.85; margin-bottom: 0.75rem;
     }
     .gi-info .hl { color: var(--green); font-weight: 600; }
     .gi-note {
-      margin-top: 1.25rem; font-size: 0.85rem; color: #999;
+      margin-top: 1.25rem; font-size: 0.85rem; color: #555;
       font-style: italic; line-height: 1.7;
     }
     .gi-pricing { display: flex; flex-direction: column; gap: 1rem; }
     .gi-price-card {
-      background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.18); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.25);
       border-radius: 16px; padding: 2rem;
       transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s;
     }
@@ -352,8 +352,8 @@
       font-family: var(--font-display); font-size: 2.5rem;
       color: var(--white); margin-bottom: 0.1rem;
     }
-    .gi-price-card .psub { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-bottom: 0.75rem; }
-    .gi-price-card p { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+    .gi-price-card .psub { font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-bottom: 0.75rem; }
+    .gi-price-card p { font-size: 0.85rem; color: rgba(255,255,255,0.9); line-height: 1.6; }
     .gi-bottom-note {
       margin-top: 1.5rem; font-size: 0.85rem; color: #aaa;
       font-style: italic; line-height: 1.7;
@@ -364,15 +364,17 @@
       background: var(--green); padding: 5rem 2rem; text-align: center;
     }
     .connect p {
-      font-size: 0.98rem; color: rgba(255,255,255,0.85); line-height: 1.85;
+      font-size: 0.98rem; color: rgba(255,255,255,0.9); line-height: 1.85;
       max-width: 600px; margin: 0 auto 1rem;
     }
     .connect a.inline-link {
-      color: var(--yellow); text-decoration: none; font-weight: 600;
-      border-bottom: 1px solid rgba(254,223,0,0.35);
-      transition: border-color 0.3s;
+      color: var(--yellow); text-decoration: underline;
+      text-decoration-color: rgba(254,223,0,0.4); text-underline-offset: 3px;
+      font-weight: 600; transition: text-decoration-color 0.3s;
     }
-    .connect a.inline-link:hover { border-color: var(--yellow); }
+    .connect a.inline-link:hover, .connect a.inline-link:focus {
+      text-decoration-color: var(--yellow);
+    }
     .connect-links {
       display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap;
     }
@@ -390,8 +392,8 @@
       color: var(--green); text-decoration: none; font-size: 0.85rem;
       font-weight: 600; transition: opacity 0.3s, transform 0.3s; display: inline-block;
     }
-    .f-social a:hover { opacity: 0.6; transform: translateY(-2px); }
-    .f-tag { font-size: 0.72rem; color: rgba(0,155,58,0.4); }
+    .f-social a:hover, .f-social a:focus { opacity: 0.6; transform: translateY(-2px); }
+    .f-tag { font-size: 0.72rem; color: rgba(0,100,30,0.6); }
 
     /* ─── MOBILE ─── */
     @media (max-width: 900px) {
@@ -427,19 +429,22 @@
     }
 
     a:focus-visible, button:focus-visible {
-      outline: 2px solid var(--yellow); outline-offset: 3px;
+      outline: 3px solid var(--yellow); outline-offset: 3px;
     }
   </style>
 </head>
 <body>
 
+  <!-- SKIP NAV -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">BLOCO GNV</a>
-    <button class="nav-hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+  <nav role="navigation" aria-label="Main navigation">
+    <a href="#" class="nav-logo" aria-label="Bloco GNV home">BLOCO GNV</a>
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
       <span></span><span></span><span></span>
     </button>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-menu" role="list">
       <li><a href="#about">About</a></li>
       <li><a href="#involved">Get Involved</a></li>
       <li><a href="#connect">Contact</a></li>
@@ -447,11 +452,11 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
-    <video autoplay muted loop playsinline>
+  <header class="hero" role="banner">
+    <video autoplay muted loop playsinline aria-hidden="true">
       <source src="media/section-video.mp4" type="video/mp4">
     </video>
-    <div class="hero-overlay"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-inner">
       <p class="hero-eyebrow">Gainesville, Florida</p>
       <h1>BLOCO <span class="yellow">GNV</span></h1>
@@ -461,11 +466,10 @@
         <a href="#about" class="btn btn-outline">Learn More</a>
       </div>
     </div>
-    <div class="hero-scroll"><div class="scroll-line"></div></div>
-  </section>
+  </header>
 
   <!-- TICKER -->
-  <div class="ticker" aria-hidden="true">
+  <div class="ticker" aria-hidden="true" role="marquee">
     <div class="ticker-inner">
       <span>Samba Reggae</span><span>&#9670;</span>
       <span>Samba Afro</span><span>&#9670;</span>
@@ -480,118 +484,121 @@
     </div>
   </div>
 
-  <!-- ABOUT -->
-  <div class="split" id="about">
-    <div class="split-text bg-cream">
-      <p class="split-label green rv">About Us</p>
-      <h2 class="split-heading dark rv">What is a Bloco?</h2>
-      <p class="split-body dark rv rv-d1">A bloco (block) is a Brazilian Portuguese word for a community percussion ensemble with roots in Afro-Brazilian Carnival processions. Similar to Mardi Gras second-line bands, blocos parade in the streets as large drum ensembles that manifest an effervescent fusion of arts and culture, including music, dance, costumes, Carnival themes, and activism.</p>
-      <p class="split-body dark rv rv-d2">To respectfully build upon these Afro-Brazilian roots of rhythmic resistance, we aim to unite the community through music, rhythm, and performance of Bloco GNV.</p>
-    </div>
-    <div class="split-media">
-      <img src="media/group-street.jpg" alt="Bloco GNV performing in downtown Gainesville" loading="lazy">
-    </div>
-  </div>
+  <main id="main-content">
 
-  <!-- FLAG ON GEOMETRIC BG -->
-  <div class="flag-wrap">
-    <div class="geo-canvas" id="geoFlag" aria-hidden="true"></div>
-    <div class="flag-inner rv">
-      <img src="media/brazil-flag.jpg" alt="Flag of Brazil" loading="lazy">
-    </div>
-  </div>
+    <!-- ABOUT -->
+    <section class="split" id="about" aria-labelledby="about-heading">
+      <div class="split-text bg-cream">
+        <p class="split-label green rv">About Us</p>
+        <h2 class="split-heading dark rv" id="about-heading">What is a Bloco?</h2>
+        <p class="split-body dark rv rv-d1">A bloco (block) is a Brazilian Portuguese word for a community percussion ensemble with roots in Afro-Brazilian Carnival processions. Similar to Mardi Gras second-line bands, blocos parade in the streets as large drum ensembles that manifest an effervescent fusion of arts and culture, including music, dance, costumes, Carnival themes, and activism.</p>
+        <p class="split-body dark rv rv-d2">To respectfully build upon these Afro-Brazilian roots of rhythmic resistance, we aim to unite the community through music, rhythm, and performance of Bloco GNV.</p>
+      </div>
+      <div class="split-media">
+        <img src="media/group-street.jpg" alt="Bloco GNV members holding drums and mallets while posing for a group photo on a street in downtown Gainesville" loading="lazy">
+      </div>
+    </section>
 
-  <!-- OUR MUSIC -->
-  <div class="split reverse">
-    <div class="split-media">
-      <img src="media/group-holiday.jpg" alt="Bloco GNV at the Gainesville holiday parade" loading="lazy">
+    <!-- FLAG ON GEOMETRIC BG -->
+    <div class="flag-wrap">
+      <div class="geo-canvas" id="geoFlag" aria-hidden="true"></div>
+      <div class="flag-inner rv">
+        <img src="media/brazil-flag.jpg" alt="" role="presentation" loading="lazy">
+      </div>
     </div>
-    <div class="split-text bg-yellow">
-      <p class="split-label blue rv">Our Music</p>
-      <h2 class="split-heading on-yellow rv">Rhythms of the African Diaspora</h2>
-      <p class="split-body on-yellow rv rv-d1">Bloco GNV plays a diverse variety of rhythms respectfully blended from Brazil, the USA, the Caribbean, and Africa. Our repertoire includes Carnival music like samba-reggae and samba-afro from Salvador, Brazil, second-line Mardi Gras arrangements, African and Afro-Caribbean rhythms, and our own rhythmic creations.</p>
-      <p class="split-body on-yellow rv rv-d2">We aim to underscore the unique and brilliant experience of playing Afro-diasporic rhythms. No prior music experience is necessary. We encourage you to attend weekly classes.</p>
+
+    <!-- OUR MUSIC -->
+    <section class="split reverse" aria-labelledby="music-heading">
+      <div class="split-media">
+        <img src="media/group-holiday.jpg" alt="Bloco GNV members in matching black shirts with drums, posing in front of a City of Gainesville fire truck during the holiday parade" loading="lazy">
+      </div>
+      <div class="split-text bg-yellow">
+        <p class="split-label blue rv">Our Music</p>
+        <h2 class="split-heading on-yellow rv" id="music-heading">Rhythms of the African Diaspora</h2>
+        <p class="split-body on-yellow rv rv-d1">Bloco GNV plays a diverse variety of rhythms respectfully blended from Brazil, the USA, the Caribbean, and Africa. Our repertoire includes Carnival music like samba-reggae and samba-afro from Salvador, Brazil, second-line Mardi Gras arrangements, African and Afro-Caribbean rhythms, and our own rhythmic creations.</p>
+        <p class="split-body on-yellow rv rv-d2">We aim to underscore the unique and brilliant experience of playing Afro-diasporic rhythms. No prior music experience is necessary. We encourage you to attend weekly classes.</p>
+      </div>
+    </section>
+
+    <!-- FULL-WIDTH VIDEO -->
+    <div class="fullvid" aria-hidden="true">
+      <video autoplay muted loop playsinline>
+        <source src="media/hero-video.mp4" type="video/mp4">
+      </video>
+      <div class="fullvid-overlay"></div>
     </div>
-  </div>
 
-  <!-- FULL-WIDTH VIDEO -->
-  <div class="fullvid">
-    <video autoplay muted loop playsinline>
-      <source src="media/hero-video.mp4" type="video/mp4">
-    </video>
-    <div class="fullvid-overlay"></div>
-  </div>
-
-  <!-- GET INVOLVED -->
-  <section class="get-involved" id="involved">
-    <div class="geo-canvas" id="geoInvolved" aria-hidden="true"></div>
-    <div class="container">
-      <p class="s-label yellow rv">Get Involved</p>
-      <h2 class="s-heading light rv">Join a Class</h2>
-      <div class="gi-grid">
-        <div class="gi-info rv rv-d1">
-          <h3>When and Where</h3>
-          <p>Classes are <span class="hl">Sundays from 5:00 to 7:00 PM</span> at the <span class="hl">Oakview Park (810 NW 8th Ave, Gainesville, FL 32601)</span> in Gainesville.</p>
-          <p>No prior music experience is necessary. We provide the drums, just bring yourself and be ready to learn. <span class="hl">Your first class is free.</span></p>
-          <p class="gi-note"></p>
-          <div style="margin-top: 1.5rem;">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6svym-x7jrnbKXt31RdhlCUoc9m0ReXGacTwJewaXezxqmQ/viewform" class="btn btn-green" target="_blank" rel="noopener">Sign Up for Free Classes</a>
+    <!-- GET INVOLVED -->
+    <section class="get-involved" id="involved" aria-labelledby="involved-heading">
+      <div class="geo-canvas" id="geoInvolved" aria-hidden="true"></div>
+      <div class="container">
+        <p class="s-label yellow rv">Get Involved</p>
+        <h2 class="s-heading light rv" id="involved-heading">Join a Class</h2>
+        <div class="gi-grid">
+          <div class="gi-info rv rv-d1">
+            <h3>When and Where</h3>
+            <p>Classes are <span class="hl">Sundays from 5:00 to 7:00 PM</span> at the <span class="hl">Oakview Park (810 NW 8th Ave, Gainesville, FL 32601)</span> in Gainesville.</p>
+            <p>No prior music experience is necessary. We provide the drums, just bring yourself and be ready to learn. <span class="hl">Your first class is free.</span></p>
+            <p class="gi-note"></p>
+            <div style="margin-top: 1.5rem;">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6svym-x7jrnbKXt31RdhlCUoc9m0ReXGacTwJewaXezxqmQ/viewform" class="btn btn-green" target="_blank" rel="noopener">Sign Up for Free Classes<span class="sr-only"> (opens in new tab)</span></a>
+            </div>
+          </div>
+          <div class="gi-pricing rv rv-d2">
+            <div class="gi-price-card">
+              <h3>Drop In</h3>
+              <div class="price" aria-label="10 dollars">$10</div>
+              <div class="psub">Per class</div>
+              <p>Come check us out, get a feel for the rhythms, and meet the community.</p>
+            </div>
+            <div class="gi-price-card">
+              <h3>Monthly</h3>
+              <div class="price" aria-label="30 dollars">$30</div>
+              <div class="psub">Per month</div>
+              <p>For those who want to commit to weekly classes and grow with the group.</p>
+            </div>
           </div>
         </div>
-        <div class="gi-pricing rv rv-d2">
-          <div class="gi-price-card">
-            <h3>Drop In</h3>
-            <div class="price">$10</div>
-            <div class="psub">Per class</div>
-            <p>Come check us out, get a feel for the rhythms, and meet the community.</p>
+
+        <div class="why-cards" style="margin-top: 4rem;">
+          <div class="wcard rv rv-d1">
+            <h3>Improve Rhythmic Coordination</h3>
+            <p>Learn and improve your rhythm by playing a variety of rhythms and breaks, eventually dancing, singing, and playing at the same time.</p>
           </div>
-          <div class="gi-price-card">
-            <h3>Monthly</h3>
-            <div class="price">$30</div>
-            <div class="psub">Per month</div>
-            <p>For those who want to commit to weekly classes and grow with the group.</p>
+          <div class="wcard rv rv-d2">
+            <h3>Meet New People</h3>
+            <p>From UF to Brazil to Florida and beyond, you'll meet people that share your interest and passion for music, the arts, community, activism, and culture.</p>
+          </div>
+          <div class="wcard rv rv-d3">
+            <h3>Build a Healthy Community</h3>
+            <p>Strongly influenced by the philosophies of Blocos Afro in Salvador, Brazil, we aim to constructively build community and support positive social causes by playing at community events in Gainesville.</p>
           </div>
         </div>
       </div>
-    <!--  <p class="gi-bottom-note rv" style="color: rgba(255,255,255,0.5);">Funds go toward drums, future guest teachers, and space expenses. Our drums were purchased and delivered by family from Brazil.</p> -->
+    </section>
 
-      <div class="why-cards" style="margin-top: 4rem;">
-        <div class="wcard rv rv-d1">
-          <h3>Improve Rhythmic Coordination</h3>
-          <p>Learn and improve your rhythm by playing a variety of rhythms and breaks, eventually dancing, singing, and playing at the same time.</p>
-        </div>
-        <div class="wcard rv rv-d2">
-          <h3>Meet New People</h3>
-          <p>From UF to Brazil to Florida and beyond, you'll meet people that share your interest and passion for music, the arts, community, activism, and culture.</p>
-        </div>
-        <div class="wcard rv rv-d3">
-          <h3>Build a Healthy Community</h3>
-          <p>Strongly influenced by the philosophies of Blocos Afro in Salvador, Brazil, we aim to constructively build community and support positive social causes by playing at community events in Gainesville.</p>
-        </div>
-      </div>
+  </main>
+
+  <!-- CONNECT -->
+  <section class="connect rv" id="connect" aria-labelledby="connect-heading" style="padding: 5rem 2rem;">
+    <p class="s-label yellow">Connect</p>
+    <h2 class="s-heading light" id="connect-heading" style="margin-bottom: 1.5rem;">Stay in Touch</h2>
+    <p>In addition to playing in Florida, we hope to maintain connections with founding Blocos Afro in Salvador, Brazil and collaborate on projects with Ile Aiye, Olodum, Dida, Mulherada, and Tambores do Mundo.</p>
+    <p>Visit <a class="inline-link" href="https://www.tamboresdomundo.com" target="_blank" rel="noopener">tamboresdomundo.com<span class="sr-only"> (opens in new tab)</span></a> to learn more and join us for Carnival in Salvador, Brazil.</p>
+    <div class="connect-links">
+      <a href="mailto:blocognv@gmail.com" class="btn btn-yellow">blocognv@gmail.com</a>
+      <a href="https://www.instagram.com/blocognv/" class="btn btn-outline" target="_blank" rel="noopener">@blocognv<span class="sr-only"> on Instagram (opens in new tab)</span></a>
     </div>
   </section>
 
-  <!-- CONNECT -->
-  <div class="connect rv" id="connect">
-    <p class="s-label yellow">Connect</p>
-    <h2 class="s-heading light" style="margin-bottom: 1.5rem;">Stay in Touch</h2>
-    <p>In addition to playing in Florida, we hope to maintain connections with founding Blocos Afro in Salvador, Brazil and collaborate on projects with Ile Aiye, Olodum, Dida, Mulherada, and Tambores do Mundo.</p>
-    <p>Visit <a class="inline-link" href="https://www.tamboresdomundo.com" target="_blank" rel="noopener">tamboresdomundo.com</a> to learn more and join us for Carnival in Salvador, Brazil.</p>
-    <div class="connect-links">
-      <a href="mailto:blocognv@gmail.com" class="btn btn-yellow">blocognv@gmail.com</a>
-      <a href="https://www.instagram.com/blocognv/" class="btn btn-outline" target="_blank" rel="noopener">@blocognv</a>
-    </div>
-  </div>
   <!-- FOOTER -->
-  <footer>
-    <div class="f-logo">BLOCO GNV</div>
-    <div class="f-social">
-      <a href="https://www.instagram.com/blocognv/" target="_blank" rel="noopener">Instagram</a>
-      <a href="mailto:blocognv@gmail.com">Email</a>
-    </div>
+  <footer role="contentinfo">
+    <div class="f-logo" aria-hidden="true">BLOCO GNV</div>
     <p class="f-tag">Gainesville, FL / Community Percussion Ensemble</p>
   </footer>
+
+  <!-- SR-ONLY utility -->
+  <style>.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }</style>
 
   <script>
     // ─── Geometric mosaic generator ───
@@ -607,9 +614,10 @@
       const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
       svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
       svg.setAttribute('preserveAspectRatio', 'none');
+      svg.setAttribute('role', 'img');
+      svg.setAttribute('aria-hidden', 'true');
       svg.style.display = 'block';
 
-      // Background
       const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
       bg.setAttribute('width', w); bg.setAttribute('height', h);
       bg.setAttribute('fill', '#009B3A');
@@ -640,10 +648,34 @@
 
     // ─── Nav ───
     const nav = document.querySelector('nav');
+    const hamburger = document.querySelector('.nav-hamburger');
+    const navMenu = document.querySelector('.nav-links');
+
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+
     document.querySelectorAll('.nav-links a').forEach(a =>
-      a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'))
+      a.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Open menu');
+      })
     );
+
+    // Close menu on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+        navMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Open menu');
+        hamburger.focus();
+      }
+    });
 
     // ─── Scroll reveal ───
     const obs = new IntersectionObserver((entries) => {
