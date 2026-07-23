@@ -85,9 +85,9 @@
       position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(
         180deg,
-        rgba(0,60,20,0.85) 0%,
-        rgba(0,60,20,0.6) 50%,
-        rgba(0,60,20,0.88) 100%
+        rgba(0,80,28,0.78) 0%,
+        rgba(0,80,28,0.5) 50%,
+        rgba(0,80,28,0.82) 100%
       );
     }
     .hero-inner {
@@ -194,6 +194,11 @@
     .gi-info h3 { font-family: var(--font-display); font-size: 1.05rem; color: var(--green); margin-bottom: 1rem; }
     .gi-info p { font-size: 0.95rem; color: var(--text); line-height: 1.85; margin-bottom: 0.75rem; }
     .gi-info .hl { color: var(--green); font-weight: 600; }
+    .gi-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2rem; margin-top: 2.5rem; align-items: start;
+    }
+    .gi-pricing { display: flex; flex-direction: column; gap: 1rem; }
 
     /* ─── PRICING ─── */
     .pricing-section { background: var(--cream); }
@@ -258,6 +263,7 @@
     @media (max-width: 900px) {
       .why-cards { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; }
+      .gi-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
@@ -349,40 +355,49 @@
       <img src="media/group-street.jpg" alt="Bloco GNV members holding drums and mallets while posing for a group photo on a street in downtown Gainesville" loading="lazy">
     </div>
 
-    <!-- 3. HOW TO GET INVOLVED -->
+    <!-- 3. GET INVOLVED (class info + pricing + why cards) -->
     <section class="how-to" id="involved" aria-labelledby="involved-heading">
       <div class="geo-canvas" id="geoInvolved" aria-hidden="true"></div>
       <div class="container">
         <p class="s-label yellow rv">Get Involved</p>
         <h2 class="s-heading light rv" id="involved-heading">Join a Class</h2>
-        <div class="gi-info rv rv-d1">
-          <h3>When and Where</h3>
-          <p>Classes are <span class="hl">Sundays from 5:00 to 7:00 PM</span> at <span class="hl">Oakview Park (810 NW 8th Ave, Gainesville, FL 32601)</span>.</p>
-          <p>No prior music experience is necessary. We provide the drums, just bring yourself and be ready to learn. <span class="hl">Your first class is free.</span></p>
-          <div style="margin-top: 1.5rem;">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6svym-x7jrnbKXt31RdhlCUoc9m0ReXGacTwJewaXezxqmQ/viewform" class="btn btn-green" target="_blank" rel="noopener">Sign Up for Free Classes<span class="sr-only"> (opens in new tab)</span></a>
+        <div class="gi-grid">
+          <div class="gi-info rv rv-d1">
+            <h3>When and Where</h3>
+            <p>Classes are <span class="hl">Sundays from 5:00 to 7:00 PM</span> at <span class="hl">Oakview Park (810 NW 8th Ave, Gainesville, FL 32601)</span>.</p>
+            <p>No prior music experience is necessary. We provide the drums, just bring yourself and be ready to learn. <span class="hl">Your first class is free.</span></p>
+            <div style="margin-top: 1.5rem;">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6svym-x7jrnbKXt31RdhlCUoc9m0ReXGacTwJewaXezxqmQ/viewform" class="btn btn-green" target="_blank" rel="noopener">Sign Up for Free Classes<span class="sr-only"> (opens in new tab)</span></a>
+            </div>
+          </div>
+          <div class="gi-pricing rv rv-d2">
+            <div class="pcard">
+              <h3>Drop In</h3>
+              <div class="price" aria-label="10 dollars">$10</div>
+              <div class="psub">Per class</div>
+              <p>Come check us out, get a feel for the rhythms, and meet the community.</p>
+            </div>
+            <div class="pcard">
+              <h3>Monthly</h3>
+              <div class="price" aria-label="30 dollars">$30</div>
+              <div class="psub">Per month</div>
+              <p>For those who want to commit to weekly classes and grow with the group.</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- 4. PRICING -->
-    <section class="pricing-section" aria-labelledby="pricing-heading">
-      <div class="container">
-        <p class="s-label green rv">Pricing</p>
-        <h2 class="s-heading dark rv" id="pricing-heading">Simple and Open</h2>
-        <div class="pricing-grid">
-          <div class="pcard rv rv-d1">
-            <h3>Drop In</h3>
-            <div class="price" aria-label="10 dollars">$10</div>
-            <div class="psub">Per class</div>
-            <p>Come check us out, get a feel for the rhythms, and meet the community.</p>
+        <div class="why-cards" style="margin-top: 4rem;">
+          <div class="wcard rv rv-d1">
+            <h3>Improve Rhythmic Coordination</h3>
+            <p>Learn and improve your rhythm by playing a variety of rhythms and breaks, eventually dancing, singing, and playing at the same time.</p>
           </div>
-          <div class="pcard rv rv-d2">
-            <h3>Monthly</h3>
-            <div class="price" aria-label="30 dollars">$30</div>
-            <div class="psub">Per month</div>
-            <p>For those who want to commit to weekly classes and grow with the group.</p>
+          <div class="wcard rv rv-d2">
+            <h3>Meet New People</h3>
+            <p>From UF to Brazil to Florida and beyond, you'll meet people that share your interest and passion for music, the arts, community, activism, and culture.</p>
+          </div>
+          <div class="wcard rv rv-d3">
+            <h3>Build a Healthy Community</h3>
+            <p>Strongly influenced by the philosophies of Blocos Afro in Salvador, Brazil, we constructively build community and support positive social causes by playing at community events in Gainesville.</p>
           </div>
         </div>
       </div>
@@ -440,28 +455,6 @@
       </video>
       <div class="fullvid-overlay"></div>
     </div>
-
-    <!-- 10. WHY JOIN CARDS -->
-    <section class="about-section" aria-labelledby="why-heading">
-      <div class="container">
-        <p class="s-label green rv">Why Join</p>
-        <h2 class="s-heading dark rv" id="why-heading">What You'll Get Out of It</h2>
-        <div class="why-cards">
-          <div class="wcard rv rv-d1">
-            <h3>Improve Rhythmic Coordination</h3>
-            <p>Learn and improve your rhythm by playing a variety of rhythms and breaks, eventually dancing, singing, and playing at the same time.</p>
-          </div>
-          <div class="wcard rv rv-d2">
-            <h3>Meet New People</h3>
-            <p>From UF to Brazil to Florida and beyond, you'll meet people that share your interest and passion for music, the arts, community, activism, and culture.</p>
-          </div>
-          <div class="wcard rv rv-d3">
-            <h3>Build a Healthy Community</h3>
-            <p>Strongly influenced by the philosophies of Blocos Afro in Salvador, Brazil, we constructively build community and support positive social causes by playing at community events in Gainesville.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
   </main>
 
