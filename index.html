@@ -4,22 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bloco GNV — Brazilian Percussion Community</title>
-  <meta name="description" content="Bloco GNV is a community percussion ensemble in Gainesville, FL rooted in Afro-Brazilian Carnival traditions.">
+  <meta name="description" content="Bloco GNV is a community percussion ensemble in Gainesville, FL rooted in Afro-Brazilian Carnaval traditions.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bungee&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
       --green: #009739;
       --green-light: #00A843;
-      --green-t: rgba(0,155,58,0.7);
       --yellow: #FEDF00;
-      --yellow-t: rgba(254,223,0,0.6);
       --blue: #0059A3;
       --blue-light: #2E8CDB;
-      --blue-t: rgba(0,89,163,0.5);
       --white: #FFFFFF;
       --cream: #FFFEF5;
       --text: #1A3A2A;
@@ -27,7 +23,6 @@
       --font-display: 'Bungee', sans-serif;
       --font-body: 'DM Sans', sans-serif;
     }
-
     html { scroll-behavior: smooth; }
     main { display: block; }
     body {
@@ -36,18 +31,14 @@
       overflow-x: hidden; line-height: 1.6;
     }
 
-    /* ─── SKIP NAV ─── */
     .skip-link {
       position: absolute; top: -100%; left: 50%; transform: translateX(-50%);
       background: var(--yellow); color: var(--green); padding: 0.75rem 1.5rem;
       font-family: var(--font-display); font-size: 0.85rem;
-      border-radius: 0 0 8px 8px; z-index: 200;
-      text-decoration: none;
+      border-radius: 0 0 8px 8px; z-index: 200; text-decoration: none;
       transition: top 0.3s;
     }
-    .skip-link:focus {
-      top: 0;
-    }
+    .skip-link:focus { top: 0; }
 
     /* ─── NAV ─── */
     nav {
@@ -57,9 +48,9 @@
       transition: all 0.6s cubic-bezier(0.16,1,0.3,1);
     }
     nav.scrolled {
-      background: rgba(0,155,58,0.92); backdrop-filter: blur(20px);
+      background: rgba(0,100,30,0.95); backdrop-filter: blur(20px);
       padding: 0.75rem 2.5rem;
-      box-shadow: 0 4px 30px rgba(0,155,58,0.3);
+      box-shadow: 0 4px 30px rgba(0,80,20,0.4);
     }
     .nav-logo {
       font-family: var(--font-display); font-size: 1.1rem;
@@ -80,7 +71,7 @@
       margin: 5px 0; border-radius: 2px; transition: 0.3s;
     }
 
-    /* ─── HERO ─── */
+    /* ─── HERO (darker overlay) ─── */
     .hero {
       height: 100vh; position: relative; display: flex;
       flex-direction: column; justify-content: center; align-items: center;
@@ -94,9 +85,9 @@
       position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(
         180deg,
-        rgba(0,140,54,0.72) 0%,
-        rgba(0,140,54,0.4) 50%,
-        rgba(0,140,54,0.78) 100%
+        rgba(0,60,20,0.85) 0%,
+        rgba(0,60,20,0.6) 50%,
+        rgba(0,60,20,0.88) 100%
       );
     }
     .hero-inner {
@@ -110,14 +101,13 @@
     .hero h1 {
       font-family: var(--font-display);
       font-size: clamp(3.5rem, 10vw, 7rem);
-      color: var(--white); line-height: 1;
-      margin-bottom: 0.75rem;
+      color: var(--white); line-height: 1; margin-bottom: 0.75rem;
       animation: heroIn 1.2s cubic-bezier(0.16,1,0.3,1) 0.5s both;
     }
     .hero h1 .yellow { color: var(--yellow); }
-
     .hero-sub {
-      font-size: 1.1rem; color: rgba(255,255,255,0.85); line-height: 1.8;
+      font-family: var(--font-display); font-size: 1.1rem;
+      color: var(--white); line-height: 1.6;
       max-width: 480px; margin: 0 auto 2.5rem;
       animation: heroIn 1.2s cubic-bezier(0.16,1,0.3,1) 0.7s both;
     }
@@ -143,319 +133,136 @@
     .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.5); }
     .btn-outline:hover, .btn-outline:focus { border-color: var(--yellow); color: var(--yellow); }
     .btn-green { background: var(--green); color: var(--white); }
+    .btn-whatsapp { background: #25D366; color: var(--white); }
+    .btn-whatsapp:hover { background: #20BD5A; }
 
     /* ─── TICKER ─── */
     .ticker { padding: 0.9rem 0; background: var(--yellow); overflow: hidden; }
-    .ticker-inner {
-      display: flex; animation: tickerScroll 22s linear infinite; white-space: nowrap;
-    }
+    .ticker-inner { display: flex; animation: tickerScroll 22s linear infinite; white-space: nowrap; }
     .ticker:hover .ticker-inner { animation-play-state: paused; }
-    .ticker span {
-      font-family: var(--font-display); font-size: 0.8rem;
-      color: var(--green); padding: 0 1.6rem;
-    }
-    @keyframes tickerScroll {
-      from { transform: translateX(0); } to { transform: translateX(-50%); }
-    }
+    .ticker span { font-family: var(--font-display); font-size: 0.8rem; color: var(--green); padding: 0 1.6rem; }
+    @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     /* ─── SCROLL REVEAL ─── */
-    .rv {
-      opacity: 0; transform: translateY(60px);
-      transition: opacity 1.1s cubic-bezier(0.16,1,0.3,1), transform 1.1s cubic-bezier(0.16,1,0.3,1);
-    }
+    .rv { opacity: 0; transform: translateY(60px); transition: opacity 1.1s cubic-bezier(0.16,1,0.3,1), transform 1.1s cubic-bezier(0.16,1,0.3,1); }
     .rv.vis { opacity: 1; transform: translateY(0); }
     .rv-d1 { transition-delay: 0.15s; }
     .rv-d2 { transition-delay: 0.3s; }
     .rv-d3 { transition-delay: 0.45s; }
 
-    /* ═══════════════════════════════════════
-       GEOMETRIC TRIANGLE MOSAIC
-       ═══════════════════════════════════════ */
-    .geo-mosaic {
-      position: relative; width: 100%; height: 180px; overflow: hidden;
-    }
+    /* ─── GEO MOSAIC ─── */
+    .geo-mosaic { position: relative; width: 100%; height: 180px; overflow: hidden; }
     .geo-mosaic svg { width: 100%; height: 100%; display: block; }
 
-    .geo-section {
-      position: relative; overflow: hidden;
-    }
-    .geo-section .geo-canvas {
-      position: absolute; inset: 0; z-index: 0; overflow: hidden;
-    }
-    .geo-section .geo-canvas svg {
-      width: 100%; height: 100%; opacity: 0.92;
-    }
-    .geo-section > *:not(.geo-canvas) { position: relative; z-index: 1; }
-
-    /* ─── SPLIT SECTIONS ─── */
-    .split {
-      display: grid; grid-template-columns: 1fr 1fr; min-height: 520px;
-      padding: 0;
-    }
-    .split-text {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 4.5rem 4rem;
-    }
-    .split-text.bg-cream { background: var(--cream); }
-    .split-text.bg-green { background: var(--green); }
-    .split-text.bg-yellow { background: var(--yellow); }
-    .split-text.bg-blue { background: var(--blue); }
-    .split-media { position: relative; overflow: hidden; }
-    .split-media img, .split-media video {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 10s cubic-bezier(0.16,1,0.3,1);
-    }
-    .split-media:hover img, .split-media:hover video { transform: scale(1.05); }
-    .split-label {
-      font-family: var(--font-display); font-size: 0.72rem; margin-bottom: 0.6rem;
-    }
-    .split-label.green { color: var(--green); }
-    .split-label.yellow { color: var(--yellow); }
-    .split-label.blue { color: #003D75; }
-    .split-heading {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 3vw, 2.1rem);
-      line-height: 1.2; margin-bottom: 1.25rem;
-    }
-    .split-heading.dark { color: var(--text); }
-    .split-heading.light { color: var(--white); }
-    .split-heading.on-yellow { color: var(--green); }
-    .split-body { font-size: 0.98rem; line-height: 1.85; margin-bottom: 1rem; }
-    .split-body.dark { color: var(--text-light); }
-    .split-body.light { color: rgba(255,255,255,0.88); }
-    .split-body.on-yellow { color: #1A3A2A; }
-
-    /* ─── FLAG ─── */
-    .flag-wrap {
-      position: relative; overflow: hidden; padding: 0;
-    }
-    .flag-wrap .geo-canvas { position: absolute; inset: 0; z-index: 0; }
-    .flag-wrap .geo-canvas svg { width: 100%; height: 100%; }
-    .flag-inner {
-      position: relative; z-index: 1;
-      padding: 4rem 2rem; display: flex; justify-content: center; align-items: center;
-    }
-    .flag-inner img {
-      width: 100%; max-width: 480px; border-radius: 6px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s;
-    }
-    .flag-inner img:hover {
-      transform: scale(1.03) rotate(-0.5deg);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
-    }
-
-    /* ─── SWING VIDEOS ─── */
-    .swing-section {
-      position: relative; background: var(--green);
-      padding: 5rem 2rem 4rem; overflow: hidden;
-    }
-    .swing-duo {
-      position: relative; max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-    .swing-vid {
-      position: relative; border-radius: 10px; overflow: hidden;
-      box-shadow: 0 15px 50px rgba(0,0,0,0.3);
-      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s;
-    }
-    .swing-vid:hover {
-      transform: scale(1.03);
-      box-shadow: 0 25px 70px rgba(0,0,0,0.35);
-      z-index: 2;
-    }
-    .swing-vid video {
-      width: 100%; display: block;
-    }
-    .swing-vid:first-child {
-      transform: rotate(-2deg) translateX(20px);
-      z-index: 1;
-    }
-    .swing-vid:first-child:hover {
-      transform: rotate(-1deg) translateX(20px) scale(1.03);
-    }
-    .swing-vid:last-child {
-      transform: rotate(1.5deg) translateX(-20px);
-      z-index: 1;
-    }
-    .swing-vid:last-child:hover {
-      transform: rotate(0.5deg) translateX(-20px) scale(1.03);
-    }
-    .swing-credit {
-      text-align: center; margin-top: 2.5rem;
-      font-family: var(--font-body); font-size: 0.8rem;
-      color: rgba(255,255,255,0.5); font-style: italic;
-      position: relative; z-index: 3;
-    }
-
-    /* ─── FULL-WIDTH VIDEO ─── */
-    .fullvid {
-      position: relative; height: 55vh; min-height: 380px; overflow: hidden; padding: 0;
-    }
-    .fullvid video {
-      position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%;
-      transform: translate(-50%, -50%); object-fit: cover;
-    }
-    .fullvid-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(0,155,58,0.1) 0%, rgba(0,89,163,0.15) 100%);
-    }
-
-    /* ─── SECTIONS ─── */
+    /* ─── CONTENT SECTIONS ─── */
     section { padding: 6rem 2rem; }
     .container { max-width: 1040px; margin: 0 auto; }
-    .s-label {
-      font-family: var(--font-display); font-size: 0.72rem; margin-bottom: 0.6rem;
-    }
+    .s-label { font-family: var(--font-display); font-size: 0.72rem; margin-bottom: 0.6rem; }
     .s-label.green { color: var(--green); }
     .s-label.yellow { color: var(--yellow); }
-    .s-label.blue { color: var(--blue); }
-    .s-heading {
-      font-family: var(--font-display);
-      font-size: clamp(1.7rem, 4.5vw, 2.6rem);
-      line-height: 1.15; margin-bottom: 1.25rem;
-    }
+    .s-heading { font-family: var(--font-display); font-size: clamp(1.7rem, 4.5vw, 2.6rem); line-height: 1.15; margin-bottom: 1.25rem; }
     .s-heading.dark { color: var(--text); }
     .s-heading.light { color: var(--white); }
-    .s-text { font-size: 0.98rem; max-width: 580px; line-height: 1.85; }
+    .s-text { font-size: 0.98rem; max-width: 620px; line-height: 1.85; }
     .s-text.dark { color: var(--text-light); }
-    .s-text.light { color: rgba(255,255,255,0.82); }
 
-    /* ─── WHY JOIN ─── */
-    .why {
-      position: relative; overflow: hidden;
-    }
-    .why .geo-canvas { position: absolute; inset: 0; z-index: 0; }
-    .why .geo-canvas svg { width: 100%; height: 100%; }
-    .why > .container { position: relative; z-index: 1; }
-    .why-cards {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem; margin-top: 2.5rem;
-    }
-    .wcard {
-      background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.5);
-      border-radius: 16px; padding: 2rem;
-      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s;
-    }
-    .wcard:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
-    }
-    .wcard h3 {
-      font-family: var(--font-display); font-size: 0.9rem;
-      color: var(--green); margin-bottom: 0.6rem;
-    }
-    .wcard p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; }
+    /* ─── ABOUT (text section) ─── */
+    .about-section { background: var(--cream); }
+    .about-section p { font-size: 0.98rem; color: var(--text-light); line-height: 1.85; margin-bottom: 1rem; max-width: 700px; }
 
-    /* ─── GET INVOLVED ─── */
-    .get-involved { background: var(--green); position: relative; overflow: hidden; }
-    .get-involved .geo-canvas { position: absolute; inset: 0; z-index: 0; }
-    .get-involved .geo-canvas svg { width: 100%; height: 100%; }
-    .get-involved > .container { position: relative; z-index: 1; }
-    .gi-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 2rem; margin-top: 2.5rem; align-items: start;
-    }
+    /* ─── FULL-WIDTH IMAGE ─── */
+    .full-img { position: relative; overflow: hidden; max-height: 500px; padding: 0; }
+    .full-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 10s cubic-bezier(0.16,1,0.3,1); }
+    .full-img:hover img { transform: scale(1.03); }
+
+    /* ─── FULL-WIDTH VIDEO ─── */
+    .fullvid { position: relative; height: 55vh; min-height: 380px; overflow: hidden; padding: 0; }
+    .fullvid video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); object-fit: cover; }
+    .fullvid-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,80,20,0.1) 0%, rgba(0,40,10,0.15) 100%); }
+
+    /* ─── HOW TO / GET INVOLVED ─── */
+    .how-to { background: var(--green); position: relative; overflow: hidden; }
+    .how-to .geo-canvas { position: absolute; inset: 0; z-index: 0; }
+    .how-to .geo-canvas svg { width: 100%; height: 100%; }
+    .how-to > .container { position: relative; z-index: 1; }
     .gi-info {
       background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
-      border-radius: 16px; padding: 2.5rem;
-      border: none;
-      transition: box-shadow 0.5s;
+      border-radius: 16px; padding: 2.5rem; border: none;
+      transition: box-shadow 0.5s; max-width: 650px;
     }
     .gi-info:hover { box-shadow: 0 15px 45px rgba(0,0,0,0.15); }
-    .gi-info h3 {
-      font-family: var(--font-display); font-size: 1.05rem;
-      color: var(--green); margin-bottom: 1rem;
-    }
-    .gi-info p {
-      font-size: 0.95rem; color: var(--text); line-height: 1.85; margin-bottom: 0.75rem;
-    }
+    .gi-info h3 { font-family: var(--font-display); font-size: 1.05rem; color: var(--green); margin-bottom: 1rem; }
+    .gi-info p { font-size: 0.95rem; color: var(--text); line-height: 1.85; margin-bottom: 0.75rem; }
     .gi-info .hl { color: var(--green); font-weight: 600; }
-    .gi-note {
-      margin-top: 1.25rem; font-size: 0.85rem; color: #555;
-      font-style: italic; line-height: 1.7;
-    }
-    .gi-pricing { display: flex; flex-direction: column; gap: 1rem; }
-    .gi-price-card {
-      background: rgba(255,255,255,0.18); backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 16px; padding: 2rem;
+
+    /* ─── PRICING ─── */
+    .pricing-section { background: var(--cream); }
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; max-width: 700px; }
+    .pcard {
+      background: var(--green); border-radius: 16px; padding: 2rem;
       transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s;
     }
-    .gi-price-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    .pcard:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,151,57,0.3); }
+    .pcard h3 { font-family: var(--font-display); font-size: 0.95rem; color: var(--yellow); margin-bottom: 0.25rem; }
+    .pcard .price { font-family: var(--font-display); font-size: 2.5rem; color: var(--white); margin-bottom: 0.1rem; }
+    .pcard .psub { font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-bottom: 0.75rem; }
+    .pcard p { font-size: 0.85rem; color: rgba(255,255,255,0.9); line-height: 1.6; }
+
+    /* ─── SWING VIDEOS ─── */
+    .swing-section { position: relative; background: var(--green); padding: 5rem 2rem 4rem; overflow: hidden; }
+    .swing-duo { position: relative; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .swing-vid { position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0 15px 50px rgba(0,0,0,0.3); transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s; }
+    .swing-vid:hover { transform: scale(1.03); box-shadow: 0 25px 70px rgba(0,0,0,0.35); z-index: 2; }
+    .swing-vid video { width: 100%; display: block; }
+    .swing-vid:first-child { transform: rotate(-2deg) translateX(20px); z-index: 1; }
+    .swing-vid:first-child:hover { transform: rotate(-1deg) translateX(20px) scale(1.03); }
+    .swing-vid:last-child { transform: rotate(1.5deg) translateX(-20px); z-index: 1; }
+    .swing-vid:last-child:hover { transform: rotate(0.5deg) translateX(-20px) scale(1.03); }
+    .swing-credit { text-align: center; margin-top: 2.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.5); font-style: italic; position: relative; z-index: 3; }
+
+    /* ─── WHATSAPP ─── */
+    .whatsapp-section { background: var(--cream); text-align: center; }
+    .whatsapp-section .qr-img { width: 200px; height: 200px; margin: 1.5rem auto; border-radius: 12px; }
+    .whatsapp-section p { font-size: 0.98rem; color: var(--text-light); line-height: 1.7; max-width: 500px; margin: 0 auto 1.5rem; }
+
+    /* ─── RHYTHMS / OUR MUSIC ─── */
+    .rhythms-section { background: var(--yellow); }
+    .rhythms-section p { font-size: 0.98rem; color: var(--text); line-height: 1.85; margin-bottom: 1rem; max-width: 700px; }
+    .rhythms-section .s-label { color: #003D75; }
+    .rhythms-section .s-heading { color: var(--green); }
+
+    /* ─── WHY CARDS ─── */
+    .why-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .wcard {
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.5); border-radius: 16px; padding: 2rem;
+      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s;
     }
-    .gi-price-card h3 {
-      font-family: var(--font-display); font-size: 0.95rem;
-      color: var(--yellow); margin-bottom: 0.25rem;
-    }
-    .gi-price-card .price {
-      font-family: var(--font-display); font-size: 2.5rem;
-      color: var(--white); margin-bottom: 0.1rem;
-    }
-    .gi-price-card .psub { font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-bottom: 0.75rem; }
-    .gi-price-card p { font-size: 0.85rem; color: rgba(255,255,255,0.9); line-height: 1.6; }
-    .gi-bottom-note {
-      margin-top: 1.5rem; font-size: 0.85rem; color: #aaa;
-      font-style: italic; line-height: 1.7;
-    }
+    .wcard:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+    .wcard h3 { font-family: var(--font-display); font-size: 0.9rem; color: var(--green); margin-bottom: 0.6rem; }
+    .wcard p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; }
 
     /* ─── CONNECT ─── */
-    .connect {
-      background: var(--green); padding: 5rem 2rem; text-align: center;
-    }
-    .connect p {
-      font-size: 0.98rem; color: rgba(255,255,255,0.9); line-height: 1.85;
-      max-width: 600px; margin: 0 auto 1rem;
-    }
-    .connect a.inline-link {
-      color: var(--yellow); text-decoration: underline;
-      text-decoration-color: rgba(254,223,0,0.4); text-underline-offset: 3px;
-      font-weight: 600; transition: text-decoration-color 0.3s;
-    }
-    .connect a.inline-link:hover, .connect a.inline-link:focus {
-      text-decoration-color: var(--yellow);
-    }
-    .connect-links {
-      display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap;
-    }
+    .connect { background: var(--green); padding: 5rem 2rem; text-align: center; }
+    .connect p { font-size: 0.98rem; color: rgba(255,255,255,0.9); line-height: 1.85; max-width: 600px; margin: 0 auto 1rem; }
+    .connect a.inline-link { color: var(--yellow); text-decoration: underline; text-decoration-color: rgba(254,223,0,0.4); text-underline-offset: 3px; font-weight: 600; transition: text-decoration-color 0.3s; }
+    .connect a.inline-link:hover, .connect a.inline-link:focus { text-decoration-color: var(--yellow); }
+    .connect-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
 
     /* ─── FOOTER ─── */
-    footer {
-      background: var(--yellow); padding: 2.5rem 2rem; text-align: center;
-    }
-    .f-logo {
-      font-family: var(--font-display);
-      font-size: 1.3rem; color: var(--green); margin-bottom: 0.75rem;
-    }
-    .f-social { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
-    .f-social a {
-      color: var(--green); text-decoration: none; font-size: 0.85rem;
-      font-weight: 600; transition: opacity 0.3s, transform 0.3s; display: inline-block;
-    }
-    .f-social a:hover, .f-social a:focus { opacity: 0.6; transform: translateY(-2px); }
+    footer { background: var(--yellow); padding: 2.5rem 2rem; text-align: center; }
+    .f-logo { font-family: var(--font-display); font-size: 1.3rem; color: var(--green); margin-bottom: 0.75rem; }
     .f-tag { font-size: 0.72rem; color: rgba(0,100,30,0.6); }
 
     /* ─── MOBILE ─── */
     @media (max-width: 900px) {
-      .split { grid-template-columns: 1fr; }
-      .split-text { padding: 3.5rem 2rem; }
-      .split-media { min-height: 300px; }
-      .split.reverse .split-media { order: -1; }
       .why-cards { grid-template-columns: 1fr; }
-      .gi-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       nav.scrolled { padding: 0.7rem 1.5rem; }
-      .nav-links {
-        display: none; position: absolute; top: 100%; left: 0; right: 0;
-        background: rgba(0,155,58,0.97); backdrop-filter: blur(16px);
-        flex-direction: column; padding: 1.5rem 2rem; gap: 1.25rem;
-      }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(0,80,20,0.97); backdrop-filter: blur(16px); flex-direction: column; padding: 1.5rem 2rem; gap: 1.25rem; }
       .nav-links.open { display: flex; }
       .nav-hamburger { display: block; }
       .hero-btns { flex-direction: column; align-items: center; }
@@ -465,29 +272,22 @@
       .swing-vid:first-child:hover { transform: rotate(-0.5deg) scale(1.02); }
       .swing-vid:last-child { transform: rotate(1deg) translateX(0); }
       .swing-vid:last-child:hover { transform: rotate(0.5deg) scale(1.02); }
-      .geo-mosaic { height: 120px; }
-      .flag-inner img { max-width: 85%; }
+      .full-img { max-height: 300px; }
     }
-
     @media (prefers-reduced-motion: reduce) {
       .ticker-inner { animation: none; }
-      .scroll-line { animation: none; }
       html { scroll-behavior: auto; }
       .rv { opacity: 1; transform: none; transition: none; }
-      .split-media img, .split-media video { transition: none; }
+      .full-img img, .swing-vid video { transition: none; }
     }
-
-    a:focus-visible, button:focus-visible {
-      outline: 3px solid var(--yellow); outline-offset: 3px;
-    }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
   </style>
 </head>
 <body>
 
-  <!-- SKIP NAV -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- NAV -->
   <nav role="navigation" aria-label="Main navigation">
     <a href="#" class="nav-logo" aria-label="Bloco GNV home">BLOCO GNV</a>
     <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
@@ -511,13 +311,12 @@
       <h1>BLOCO <span class="yellow">GNV</span></h1>
       <p class="hero-sub">A community percussion group playing music from Brazil</p>
       <div class="hero-btns">
-        <a href="#involved" class="btn btn-yellow">Get Involved</a>
+        <a href="#involved" class="btn btn-outline">Get Involved</a>
         <a href="#about" class="btn btn-outline" aria-label="Learn more about Bloco GNV">Learn More</a>
       </div>
     </div>
   </header>
 
-  <!-- TICKER -->
   <div class="ticker" aria-hidden="true" role="marquee">
     <div class="ticker-inner">
       <span>Samba Reggae</span><span>&#9670;</span>
@@ -535,41 +334,79 @@
 
   <main id="main-content">
 
-    <!-- ABOUT -->
-    <section class="split" id="about" aria-labelledby="about-heading">
-      <div class="split-text bg-cream">
-        <p class="split-label green rv">About Us</p>
-        <h2 class="split-heading dark rv" id="about-heading">What is a Bloco?</h2>
-        <p class="split-body dark rv rv-d1">A bloco (block) is a Brazilian Portuguese word for a community percussion ensemble with roots in Afro-Brazilian Carnival processions. Similar to Mardi Gras second-line bands, blocos parade in the streets as large drum ensembles that manifest an effervescent fusion of arts and culture, including music, dance, costumes, Carnival themes, and activism.</p>
-        <p class="split-body dark rv rv-d2">To respectfully build upon these Afro-Brazilian roots of rhythmic resistance, we aim to unite the community through music, rhythm, and performance of Bloco GNV.</p>
-      </div>
-      <div class="split-media">
-        <img src="media/group-street.jpg" alt="Bloco GNV members holding drums and mallets while posing for a group photo on a street in downtown Gainesville" loading="lazy">
+    <!-- 1. ABOUT / BACKGROUND INFO -->
+    <section class="about-section" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <p class="s-label green rv">About Us</p>
+        <h2 class="s-heading dark rv" id="about-heading">What is a Bloco?</h2>
+        <p class="rv rv-d1">A bloco (block) is a Brazilian Portuguese word for a community percussion ensemble with roots in Afro-Brazilian Carnaval processions. Similar to Mardi Gras second-line bands, blocos parade in the streets as large drum ensembles that manifest an effervescent fusion of arts and culture, including music, dance, costumes, Carnaval themes, and activism.</p>
+        <p class="rv rv-d2">To respectfully build upon these Afro-Brazilian roots of rhythmic resistance, we unite the community through music, rhythm, and performance of Bloco GNV.</p>
       </div>
     </section>
 
-    <!-- FLAG ON GEOMETRIC BG -->
-    <div class="flag-wrap">
-      <div class="geo-canvas" id="geoFlag" aria-hidden="true"></div>
-      <div class="flag-inner rv">
-        <img src="media/brazil-flag.jpg" alt="" role="presentation" loading="lazy">
-      </div>
+    <!-- 2. IMAGE -->
+    <div class="full-img rv">
+      <img src="media/group-street.jpg" alt="Bloco GNV members holding drums and mallets while posing for a group photo on a street in downtown Gainesville" loading="lazy">
     </div>
 
-    <!-- OUR MUSIC -->
-    <section class="split reverse" aria-labelledby="music-heading">
-      <div class="split-media">
-        <img src="media/group-holiday.jpg" alt="Bloco GNV members in matching black shirts with drums, posing in front of a City of Gainesville fire truck during the holiday parade" loading="lazy">
-      </div>
-      <div class="split-text bg-yellow">
-        <p class="split-label blue rv">Our Music</p>
-        <h2 class="split-heading on-yellow rv" id="music-heading">Rhythms of the African Diaspora</h2>
-        <p class="split-body on-yellow rv rv-d1">Bloco GNV plays a diverse variety of rhythms respectfully blended from Brazil, the USA, the Caribbean, and Africa. Our repertoire includes Carnival music like samba-reggae and samba-afro from Salvador, Brazil, second-line Mardi Gras arrangements, African and Afro-Caribbean rhythms, and our own rhythmic creations.</p>
-        <p class="split-body on-yellow rv rv-d2">We aim to underscore the unique and brilliant experience of playing Afro-diasporic rhythms. No prior music experience is necessary. We encourage you to attend weekly classes.</p>
+    <!-- 3. HOW TO GET INVOLVED -->
+    <section class="how-to" id="involved" aria-labelledby="involved-heading">
+      <div class="geo-canvas" id="geoInvolved" aria-hidden="true"></div>
+      <div class="container">
+        <p class="s-label yellow rv">Get Involved</p>
+        <h2 class="s-heading light rv" id="involved-heading">Join a Class</h2>
+        <div class="gi-info rv rv-d1">
+          <h3>When and Where</h3>
+          <p>Classes are <span class="hl">Sundays from 5:00 to 7:00 PM</span> at <span class="hl">Oakview Park (810 NW 8th Ave, Gainesville, FL 32601)</span>.</p>
+          <p>No prior music experience is necessary. We provide the drums, just bring yourself and be ready to learn. <span class="hl">Your first class is free.</span></p>
+          <div style="margin-top: 1.5rem;">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6svym-x7jrnbKXt31RdhlCUoc9m0ReXGacTwJewaXezxqmQ/viewform" class="btn btn-green" target="_blank" rel="noopener">Sign Up for Free Classes<span class="sr-only"> (opens in new tab)</span></a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- SWING VIDEOS -->
+    <!-- 4. PRICING -->
+    <section class="pricing-section" aria-labelledby="pricing-heading">
+      <div class="container">
+        <p class="s-label green rv">Pricing</p>
+        <h2 class="s-heading dark rv" id="pricing-heading">Simple and Open</h2>
+        <div class="pricing-grid">
+          <div class="pcard rv rv-d1">
+            <h3>Drop In</h3>
+            <div class="price" aria-label="10 dollars">$10</div>
+            <div class="psub">Per class</div>
+            <p>Come check us out, get a feel for the rhythms, and meet the community.</p>
+          </div>
+          <div class="pcard rv rv-d2">
+            <h3>Monthly</h3>
+            <div class="price" aria-label="30 dollars">$30</div>
+            <div class="psub">Per month</div>
+            <p>For those who want to commit to weekly classes and grow with the group.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. IMAGE -->
+    <div class="full-img rv">
+      <img src="media/group-holiday.jpg" alt="Bloco GNV members in matching black shirts with drums, posing in front of a City of Gainesville fire truck during the holiday parade" loading="lazy">
+    </div>
+
+    <!-- 6. WHATSAPP JOIN -->
+    <section class="whatsapp-section" aria-labelledby="whatsapp-heading">
+      <div class="container">
+        <p class="s-label green rv">Join the Group</p>
+        <h2 class="s-heading dark rv" id="whatsapp-heading">Stay Connected on WhatsApp</h2>
+        <p class="rv rv-d1">Join our WhatsApp group to stay in the loop on class updates, events, and community hangouts.</p>
+        <img src="media/whatsapp-qr.jpg" alt="QR code to join Bloco GNV WhatsApp group" class="qr-img rv rv-d2" loading="lazy">
+        <div class="rv rv-d3">
+          <a href="https://chat.whatsapp.com/JH2Th89Td31FEx3pFTVkzy?mode=gi_t" class="btn btn-whatsapp" target="_blank" rel="noopener">Join WhatsApp Group<span class="sr-only"> (opens in new tab)</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. SWING VIDEOS -->
     <div class="swing-section" aria-label="Bloco GNV members drumming outdoors">
       <div class="swing-duo rv">
         <div class="swing-vid">
@@ -586,7 +423,17 @@
       <p class="swing-credit">Photos by Lucas Demanuel-Thue</p>
     </div>
 
-    <!-- FULL-WIDTH VIDEO -->
+    <!-- 8. RHYTHMS / OUR MUSIC -->
+    <section class="rhythms-section" aria-labelledby="music-heading">
+      <div class="container">
+        <p class="s-label rv">Our Music</p>
+        <h2 class="s-heading rv" id="music-heading">Rhythms of the African Diaspora</h2>
+        <p class="rv rv-d1">Bloco GNV plays a diverse variety of rhythms respectfully blended from Brazil, the USA, the Caribbean, and Africa. Our repertoire includes Carnaval music like samba-reggae and samba-afro from Salvador, Brazil, second-line Mardi Gras arrangements, African and Afro-Caribbean rhythms, and our own rhythmic creations.</p>
+        <p class="rv rv-d2">We underscore the unique and brilliant experience of playing Afro-diasporic rhythms. No prior music experience is necessary. We encourage you to attend weekly classes.</p>
+      </div>
+    </section>
+
+    <!-- 9. FULL-WIDTH VIDEO -->
     <div class="fullvid" aria-hidden="true">
       <video autoplay muted loop playsinline>
         <source src="media/hero-video.mp4" type="video/mp4">
@@ -594,39 +441,12 @@
       <div class="fullvid-overlay"></div>
     </div>
 
-    <!-- GET INVOLVED -->
-    <section class="get-involved" id="involved" aria-labelledby="involved-heading">
-      <div class="geo-canvas" id="geoInvolved" aria-hidden="true"></div>
+    <!-- 10. WHY JOIN CARDS -->
+    <section class="about-section" aria-labelledby="why-heading">
       <div class="container">
-        <p class="s-label yellow rv">Get Involved</p>
-        <h2 class="s-heading light rv" id="involved-heading">Join a Class</h2>
-        <div class="gi-grid">
-          <div class="gi-info rv rv-d1">
-            <h3>When and Where</h3>
-            <p>Classes are <span class="hl">Sundays from 5:00 to 7:00 PM</span> at the <span class="hl">Oakview Park (810 NW 8th Ave, Gainesville, FL 32601)</span> in Gainesville.</p>
-            <p>No prior music experience is necessary. We provide the drums, just bring yourself and be ready to learn. <span class="hl">Your first class is free.</span></p>
-            <p class="gi-note"></p>
-            <div style="margin-top: 1.5rem;">
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6svym-x7jrnbKXt31RdhlCUoc9m0ReXGacTwJewaXezxqmQ/viewform" class="btn btn-green" target="_blank" rel="noopener">Sign Up for Free Classes<span class="sr-only"> (opens in new tab)</span></a>
-            </div>
-          </div>
-          <div class="gi-pricing rv rv-d2">
-            <div class="gi-price-card">
-              <h3>Drop In</h3>
-              <div class="price" aria-label="10 dollars">$10</div>
-              <div class="psub">Per class</div>
-              <p>Come check us out, get a feel for the rhythms, and meet the community.</p>
-            </div>
-            <div class="gi-price-card">
-              <h3>Monthly</h3>
-              <div class="price" aria-label="30 dollars">$30</div>
-              <div class="psub">Per month</div>
-              <p>For those who want to commit to weekly classes and grow with the group.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="why-cards" style="margin-top: 4rem;">
+        <p class="s-label green rv">Why Join</p>
+        <h2 class="s-heading dark rv" id="why-heading">What You'll Get Out of It</h2>
+        <div class="why-cards">
           <div class="wcard rv rv-d1">
             <h3>Improve Rhythmic Coordination</h3>
             <p>Learn and improve your rhythm by playing a variety of rhythms and breaks, eventually dancing, singing, and playing at the same time.</p>
@@ -637,7 +457,7 @@
           </div>
           <div class="wcard rv rv-d3">
             <h3>Build a Healthy Community</h3>
-            <p>Strongly influenced by the philosophies of Blocos Afro in Salvador, Brazil, we aim to constructively build community and support positive social causes by playing at community events in Gainesville.</p>
+            <p>Strongly influenced by the philosophies of Blocos Afro in Salvador, Brazil, we constructively build community and support positive social causes by playing at community events in Gainesville.</p>
           </div>
         </div>
       </div>
@@ -649,120 +469,40 @@
   <section class="connect rv" id="connect" aria-labelledby="connect-heading" style="padding: 5rem 2rem;">
     <p class="s-label yellow">Connect</p>
     <h2 class="s-heading light" id="connect-heading" style="margin-bottom: 1.5rem;">Stay in Touch</h2>
-    <p>In addition to playing in Florida, we hope to maintain connections with founding Blocos Afro in Salvador, Brazil and collaborate on projects with Ile Aiye, Olodum, Dida, Mulherada, and Tambores do Mundo.</p>
-    <p>Visit <a class="inline-link" href="https://www.tamboresdomundo.com" target="_blank" rel="noopener">tamboresdomundo.com<span class="sr-only"> (opens in new tab)</span></a> to learn more and join us for Carnival in Salvador, Brazil.</p>
+    <p>We hope to maintain connections with founding Blocos Afro in Salvador, Brazil and collaborate on projects with Ile Aiye, Olodum, Dida, and Mulherada.</p>
     <div class="connect-links">
       <a href="mailto:blocognv@gmail.com" class="btn btn-yellow">blocognv@gmail.com</a>
       <a href="https://www.instagram.com/blocognv/" class="btn btn-outline" target="_blank" rel="noopener">@blocognv<span class="sr-only"> on Instagram (opens in new tab)</span></a>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer role="contentinfo">
     <div class="f-logo" aria-hidden="true">BLOCO GNV</div>
     <p class="f-tag">Gainesville, FL / Community Percussion Ensemble</p>
   </footer>
 
-  <!-- SR-ONLY utility -->
-  <style>.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }</style>
-
   <script>
-    // ─── Geometric mosaic generator ───
     function generateMosaic(container, w, h, density) {
-      const colors = [
-        'rgba(0,155,58,0.75)', 'rgba(0,155,58,0.55)',
-        'rgba(0,196,78,0.6)', 'rgba(0,196,78,0.4)',
-        'rgba(254,223,0,0.65)', 'rgba(254,223,0,0.45)',
-        'rgba(0,89,163,0.55)', 'rgba(0,89,163,0.35)',
-        'rgba(46,140,219,0.45)', 'rgba(46,140,219,0.3)',
-      ];
-
-      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-      svg.setAttribute('preserveAspectRatio', 'none');
-      svg.setAttribute('role', 'img');
-      svg.setAttribute('aria-hidden', 'true');
-      svg.style.display = 'block';
-
-      const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-      bg.setAttribute('width', w); bg.setAttribute('height', h);
-      bg.setAttribute('fill', '#009B3A');
-      svg.appendChild(bg);
-
-      for (let i = 0; i < density; i++) {
-        const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-        const cx = Math.random() * w;
-        const cy = Math.random() * h;
-        const size = 40 + Math.random() * 160;
-        const angle = Math.random() * Math.PI * 2;
-
-        const pts = [];
-        for (let j = 0; j < 3; j++) {
-          const a = angle + (j * Math.PI * 2 / 3);
-          pts.push(`${cx + Math.cos(a) * size},${cy + Math.sin(a) * size}`);
-        }
-        poly.setAttribute('points', pts.join(' '));
-        poly.setAttribute('fill', colors[Math.floor(Math.random() * colors.length)]);
-        svg.appendChild(poly);
-      }
+      const colors = ['rgba(0,155,58,0.75)','rgba(0,155,58,0.55)','rgba(0,196,78,0.6)','rgba(0,196,78,0.4)','rgba(254,223,0,0.65)','rgba(254,223,0,0.45)','rgba(0,89,163,0.55)','rgba(0,89,163,0.35)','rgba(46,140,219,0.45)','rgba(46,140,219,0.3)'];
+      const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+      svg.setAttribute('viewBox',`0 0 ${w} ${h}`);svg.setAttribute('preserveAspectRatio','none');svg.setAttribute('role','img');svg.setAttribute('aria-hidden','true');svg.style.display='block';
+      const bg = document.createElementNS('http://www.w3.org/2000/svg','rect');bg.setAttribute('width',w);bg.setAttribute('height',h);bg.setAttribute('fill','#007A2E');svg.appendChild(bg);
+      for(let i=0;i<density;i++){const poly=document.createElementNS('http://www.w3.org/2000/svg','polygon');const cx=Math.random()*w;const cy=Math.random()*h;const size=40+Math.random()*160;const angle=Math.random()*Math.PI*2;const pts=[];for(let j=0;j<3;j++){const a=angle+(j*Math.PI*2/3);pts.push(`${cx+Math.cos(a)*size},${cy+Math.sin(a)*size}`);}poly.setAttribute('points',pts.join(' '));poly.setAttribute('fill',colors[Math.floor(Math.random()*colors.length)]);svg.appendChild(poly);}
       container.appendChild(svg);
     }
+    generateMosaic(document.getElementById('geoInvolved'),1600,800,60);
 
-    // Generate mosaics
-    generateMosaic(document.getElementById('geoFlag'), 1600, 500, 50);
-    generateMosaic(document.getElementById('geoInvolved'), 1600, 1200, 70);
+    const nav=document.querySelector('nav');const hamburger=document.querySelector('.nav-hamburger');const navMenu=document.querySelector('.nav-links');
+    window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
+    hamburger.addEventListener('click',()=>{const isOpen=navMenu.classList.toggle('open');hamburger.setAttribute('aria-expanded',isOpen);hamburger.setAttribute('aria-label',isOpen?'Close menu':'Open menu');});
+    document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{navMenu.classList.remove('open');hamburger.setAttribute('aria-expanded','false');hamburger.setAttribute('aria-label','Open menu');}));
+    document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&navMenu.classList.contains('open')){navMenu.classList.remove('open');hamburger.setAttribute('aria-expanded','false');hamburger.setAttribute('aria-label','Open menu');hamburger.focus();}});
 
-    // ─── Nav ───
-    const nav = document.querySelector('nav');
-    const hamburger = document.querySelector('.nav-hamburger');
-    const navMenu = document.querySelector('.nav-links');
+    const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.08,rootMargin:'0px 0px -20px 0px'});
+    document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
-    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
-
-    hamburger.addEventListener('click', () => {
-      const isOpen = navMenu.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', isOpen);
-      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-    });
-
-    document.querySelectorAll('.nav-links a').forEach(a =>
-      a.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        hamburger.setAttribute('aria-label', 'Open menu');
-      })
-    );
-
-    // Close menu on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navMenu.classList.contains('open')) {
-        navMenu.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        hamburger.setAttribute('aria-label', 'Open menu');
-        hamburger.focus();
-      }
-    });
-
-    // ─── Scroll reveal ───
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
-    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
-    document.querySelectorAll('.rv').forEach(el => obs.observe(el));
-
-    // ─── Hero parallax ───
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const vid = document.querySelector('.hero video');
-          if (vid && window.scrollY < window.innerHeight) {
-            vid.style.transform = `translate(-50%, -50%) scale(1.08) translateY(${window.scrollY * 0.18}px)`;
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
+    let ticking=false;
+    window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(()=>{const vid=document.querySelector('.hero video');if(vid&&window.scrollY<window.innerHeight){vid.style.transform=`translate(-50%,-50%) scale(1.08) translateY(${window.scrollY*0.18}px)`;}ticking=false;});ticking=true;}},{passive:true});
   </script>
 </body>
 </html>
