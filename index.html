@@ -94,9 +94,9 @@
       position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(
         180deg,
-        rgba(0,140,54,0.72) 0%,
-        rgba(0,140,54,0.4) 50%,
-        rgba(0,140,54,0.78) 100%
+        rgba(0,70,24,0.82) 0%,
+        rgba(0,70,24,0.55) 50%,
+        rgba(0,70,24,0.85) 100%
       );
     }
     .hero-inner {
@@ -117,7 +117,7 @@
     .hero h1 .yellow { color: var(--yellow); }
 
     .hero-sub {
-      font-size: 1.1rem; color: rgba(255,255,255,0.85); line-height: 1.8;
+      font-size: 1.1rem; color: rgba(255,255,255,0.95); line-height: 1.8;
       max-width: 480px; margin: 0 auto 2.5rem;
       animation: heroIn 1.2s cubic-bezier(0.16,1,0.3,1) 0.7s both;
     }
@@ -349,11 +349,22 @@
     }
     .wcard p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; }
 
+    /* ─── UNIFIED MOSAIC WRAPPER ─── */
+    .mosaic-wrap {
+      position: relative; overflow: hidden;
+    }
+    .mosaic-wrap > .geo-canvas {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .mosaic-wrap > .geo-canvas svg {
+      width: 100%; height: 100%; opacity: 0.92;
+    }
+    .mosaic-wrap > *:not(.geo-canvas) {
+      position: relative; z-index: 1;
+    }
+
     /* ─── GET INVOLVED ─── */
-    .get-involved { background: var(--green); position: relative; overflow: hidden; }
-    .get-involved .geo-canvas { position: absolute; inset: 0; z-index: 0; }
-    .get-involved .geo-canvas svg { width: 100%; height: 100%; }
-    .get-involved > .container { position: relative; z-index: 1; }
+    .get-involved { padding: 6rem 2rem; }
     .gi-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 2rem; margin-top: 2.5rem; align-items: start;
@@ -402,6 +413,23 @@
       margin-top: 1.5rem; font-size: 0.85rem; color: #aaa;
       font-style: italic; line-height: 1.7;
     }
+
+    .btn-whatsapp { background: #25D366; color: var(--white); }
+    .btn-whatsapp:hover { background: #20BD5A; }
+
+    .whatsapp-block {
+      text-align: center; padding: 3rem 2rem 4rem;
+    }
+    .whatsapp-block p {
+      font-size: 0.98rem; color: rgba(255,255,255,0.8); line-height: 1.7;
+      max-width: 500px; margin: 0 auto 1.5rem;
+    }
+    .whatsapp-block .qr-img {
+      width: 180px; height: 180px; margin: 0 auto 1.5rem; display: block;
+      border-radius: 12px; background: white; padding: 8px;
+    }
+    .whatsapp-block .s-heading { color: var(--white); }
+    .whatsapp-block .s-label { color: var(--yellow); }
 
     /* ─── CONNECT ─── */
     .connect {
@@ -511,7 +539,7 @@
       <h1>BLOCO <span class="yellow">GNV</span></h1>
       <p class="hero-sub">A community percussion group playing music from Brazil</p>
       <div class="hero-btns">
-        <a href="#involved" class="btn btn-yellow">Get Involved</a>
+        <a href="#involved" class="btn btn-outline">Get Involved</a>
         <a href="#about" class="btn btn-outline" aria-label="Learn more about Bloco GNV">Learn More</a>
       </div>
     </div>
@@ -548,15 +576,99 @@
       </div>
     </section>
 
-    <!-- FLAG ON GEOMETRIC BG -->
-    <div class="flag-wrap">
-      <div class="geo-canvas" id="geoFlag" aria-hidden="true"></div>
-      <div class="flag-inner rv">
-        <img src="media/brazil-flag.jpg" alt="" role="presentation" loading="lazy">
-      </div>
-    </div>
 
-    <!-- OUR MUSIC -->
+    <!-- UNIFIED MOSAIC SECTION -->
+    <div class="mosaic-wrap">
+      <div class="geo-canvas" id="geoUnified" aria-hidden="true"></div>
+
+      <!-- GET INVOLVED -->
+      <section class="get-involved" id="involved" aria-labelledby="involved-heading">
+        <div class="container">
+          <p class="s-label yellow rv">Get Involved</p>
+          <h2 class="s-heading light rv" id="involved-heading">Join a Class</h2>
+          <div class="gi-grid">
+            <div class="gi-info rv rv-d1">
+              <h3>When and Where</h3>
+              <p>Classes are <span class="hl">Sundays from 5:00 to 7:00 PM</span> at the <span class="hl">Oakview Park (810 NW 8th Ave, Gainesville, FL 32601)</span> in Gainesville.</p>
+              <p>No prior music experience is necessary. We provide the drums, just bring yourself and be ready to learn. <span class="hl">Your first class is free.</span></p>
+              <div style="margin-top: 1.5rem;">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6svym-x7jrnbKXt31RdhlCUoc9m0ReXGacTwJewaXezxqmQ/viewform" class="btn btn-green" target="_blank" rel="noopener">Sign Up for Free Classes<span class="sr-only"> (opens in new tab)</span></a>
+              </div>
+            </div>
+            <div class="gi-pricing rv rv-d2">
+              <div class="gi-price-card">
+                <h3>Drop In</h3>
+                <div class="price" aria-label="10 dollars">$10</div>
+                <div class="psub">Per class</div>
+                <p>Come check us out, get a feel for the rhythms, and meet the community.</p>
+              </div>
+              <div class="gi-price-card">
+                <h3>Monthly</h3>
+                <div class="price" aria-label="30 dollars">$30</div>
+                <div class="psub">Per month</div>
+                <p>For those who want to commit to weekly classes and grow with the group.</p>
+              </div>
+            </div>
+          </div>
+          <div class="why-cards" style="margin-top: 4rem;">
+            <div class="wcard rv rv-d1">
+              <h3>Improve Rhythmic Coordination</h3>
+              <p>Learn and improve your rhythm by playing a variety of rhythms and breaks, eventually dancing, singing, and playing at the same time.</p>
+            </div>
+            <div class="wcard rv rv-d2">
+              <h3>Meet New People</h3>
+              <p>From UF to Brazil to Florida and beyond, you'll meet people that share your interest and passion for music, the arts, community, activism, and culture.</p>
+            </div>
+            <div class="wcard rv rv-d3">
+              <h3>Build a Healthy Community</h3>
+              <p>Strongly influenced by the philosophies of Blocos Afro in Salvador, Brazil, we constructively build community and support positive social causes by playing at community events in Gainesville.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHATSAPP -->
+      <div class="whatsapp-block rv">
+        <p class="s-label yellow">Join the Group</p>
+        <h2 class="s-heading" style="color: var(--white); margin-bottom: 1rem;">Stay Connected on WhatsApp</h2>
+        <p>Join our WhatsApp group for class updates, events, and community hangouts.</p>
+        <img src="media/whatsapp-qr.jpg" alt="QR code to join Bloco GNV WhatsApp group" class="qr-img" loading="lazy">
+        <a href="https://chat.whatsapp.com/JH2Th89Td31FEx3pFTVkzy?mode=gi_t" class="btn btn-whatsapp" target="_blank" rel="noopener">Join WhatsApp Group<span class="sr-only"> (opens in new tab)</span></a>
+      </div>
+
+      <!-- SWING VIDEOS -->
+      <div class="swing-section" aria-label="Bloco GNV members drumming outdoors">
+        <div class="swing-duo rv">
+          <div class="swing-vid">
+            <video autoplay muted loop playsinline aria-hidden="true">
+              <source src="media/swing-video.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="swing-vid">
+            <video autoplay muted loop playsinline aria-hidden="true">
+              <source src="media/swing-video2.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <p class="swing-credit">Photos by Lucas Demanuel-Thue</p>
+      </div>
+
+      <!-- FLAG -->
+      <div style="padding: 4rem 2rem; display: flex; justify-content: center;" class="rv">
+        <img src="media/brazil-flag.jpg" alt="" role="presentation" loading="lazy" style="width: 100%; max-width: 480px; border-radius: 6px; box-shadow: 0 20px 60px rgba(0,0,0,0.25);">
+      </div>
+
+    </div><!-- end mosaic-wrap -->
+
+    <!-- FULL-WIDTH VIDEO -->
+    <div class="fullvid" aria-hidden="true">
+      <video autoplay muted loop playsinline>
+        <source src="media/hero-video.mp4" type="video/mp4">
+      </video>
+      <div class="fullvid-overlay"></div>
+    </div>
+	
+	    <!-- OUR MUSIC -->
     <section class="split reverse" aria-labelledby="music-heading">
       <div class="split-media">
         <img src="media/group-holiday.jpg" alt="Bloco GNV members in matching black shirts with drums, posing in front of a City of Gainesville fire truck during the holiday parade" loading="lazy">
@@ -569,79 +681,6 @@
       </div>
     </section>
 
-    <!-- SWING VIDEOS -->
-    <div class="swing-section" aria-label="Bloco GNV members drumming outdoors">
-      <div class="swing-duo rv">
-        <div class="swing-vid">
-          <video autoplay muted loop playsinline aria-hidden="true">
-            <source src="media/swing-video.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="swing-vid">
-          <video autoplay muted loop playsinline aria-hidden="true">
-            <source src="media/swing-video2.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <p class="swing-credit">Photos by Lucas Demanuel-Thue</p>
-    </div>
-
-    <!-- FULL-WIDTH VIDEO -->
-    <div class="fullvid" aria-hidden="true">
-      <video autoplay muted loop playsinline>
-        <source src="media/hero-video.mp4" type="video/mp4">
-      </video>
-      <div class="fullvid-overlay"></div>
-    </div>
-
-    <!-- GET INVOLVED -->
-    <section class="get-involved" id="involved" aria-labelledby="involved-heading">
-      <div class="geo-canvas" id="geoInvolved" aria-hidden="true"></div>
-      <div class="container">
-        <p class="s-label yellow rv">Get Involved</p>
-        <h2 class="s-heading light rv" id="involved-heading">Join a Class</h2>
-        <div class="gi-grid">
-          <div class="gi-info rv rv-d1">
-            <h3>When and Where</h3>
-            <p>Classes are <span class="hl">Sundays from 5:00 to 7:00 PM</span> at the <span class="hl">Oakview Park (810 NW 8th Ave, Gainesville, FL 32601)</span> in Gainesville.</p>
-            <p>No prior music experience is necessary. We provide the drums, just bring yourself and be ready to learn. <span class="hl">Your first class is free.</span></p>
-            <p class="gi-note"></p>
-            <div style="margin-top: 1.5rem;">
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6svym-x7jrnbKXt31RdhlCUoc9m0ReXGacTwJewaXezxqmQ/viewform" class="btn btn-green" target="_blank" rel="noopener">Sign Up for Free Classes<span class="sr-only"> (opens in new tab)</span></a>
-            </div>
-          </div>
-          <div class="gi-pricing rv rv-d2">
-            <div class="gi-price-card">
-              <h3>Drop In</h3>
-              <div class="price" aria-label="10 dollars">$10</div>
-              <div class="psub">Per class</div>
-              <p>Come check us out, get a feel for the rhythms, and meet the community.</p>
-            </div>
-            <div class="gi-price-card">
-              <h3>Monthly</h3>
-              <div class="price" aria-label="30 dollars">$30</div>
-              <div class="psub">Per month</div>
-              <p>For those who want to commit to weekly classes and grow with the group.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="why-cards" style="margin-top: 4rem;">
-          <div class="wcard rv rv-d1">
-            <h3>Improve Rhythmic Coordination</h3>
-            <p>Learn and improve your rhythm by playing a variety of rhythms and breaks, eventually dancing, singing, and playing at the same time.</p>
-          </div>
-          <div class="wcard rv rv-d2">
-            <h3>Meet New People</h3>
-            <p>From UF to Brazil to Florida and beyond, you'll meet people that share your interest and passion for music, the arts, community, activism, and culture.</p>
-          </div>
-          <div class="wcard rv rv-d3">
-            <h3>Build a Healthy Community</h3>
-            <p>Strongly influenced by the philosophies of Blocos Afro in Salvador, Brazil, we aim to constructively build community and support positive social causes by playing at community events in Gainesville.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
   </main>
 
@@ -649,8 +688,7 @@
   <section class="connect rv" id="connect" aria-labelledby="connect-heading" style="padding: 5rem 2rem;">
     <p class="s-label yellow">Connect</p>
     <h2 class="s-heading light" id="connect-heading" style="margin-bottom: 1.5rem;">Stay in Touch</h2>
-    <p>In addition to playing in Florida, we hope to maintain connections with founding Blocos Afro in Salvador, Brazil and collaborate on projects with Ile Aiye, Olodum, Dida, Mulherada, and Tambores do Mundo.</p>
-    <p>Visit <a class="inline-link" href="https://www.tamboresdomundo.com" target="_blank" rel="noopener">tamboresdomundo.com<span class="sr-only"> (opens in new tab)</span></a> to learn more and join us for Carnival in Salvador, Brazil.</p>
+    <p>We hope to maintain connections with founding Blocos Afro in Salvador, Brazil and collaborate on projects with Ile Aiye, Olodum, Dida, and Mulherada.</p>
     <div class="connect-links">
       <a href="mailto:blocognv@gmail.com" class="btn btn-yellow">blocognv@gmail.com</a>
       <a href="https://www.instagram.com/blocognv/" class="btn btn-outline" target="_blank" rel="noopener">@blocognv<span class="sr-only"> on Instagram (opens in new tab)</span></a>
@@ -709,8 +747,7 @@
     }
 
     // Generate mosaics
-    generateMosaic(document.getElementById('geoFlag'), 1600, 500, 50);
-    generateMosaic(document.getElementById('geoInvolved'), 1600, 1200, 70);
+    generateMosaic(document.getElementById('geoUnified'), 1600, 3000, 120);
 
     // ─── Nav ───
     const nav = document.querySelector('nav');
